@@ -1,38 +1,150 @@
+* { padding: 0; margin: 0; }
+html, body, #root {
+    min-height: 100% !important;
+    height: 100%;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  height: 100%;
+  width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+  .MainWindow {
+      display: grid;
+      height: 90%;
+      width: 90%;
+
+      overflow: hidden;
+      color: var(--textColor);
+      grid-template-rows: 15% 50% 5% 30%;
+      grid-template-areas:
+          "title"
+          "prompt"
+          "count"
+          "ioWindow";
+  }
+
+  textarea {
+    margin: 0;
+  }
+
+  .ioWindow {
+    margin: 0;
+  }
+}
+
+@media only screen and (min-width: 601px) {
+  .MainWindow {
+      display: grid;
+      height: 80%;
+      width: 70%;
+
+      overflow: hidden;
+      color: var(--textColor);
+      grid-template-columns: 65% 35%;
+      grid-template-rows: 20% 35% 35%;
+      grid-template-areas:
+          "title title"
+          "prompt ioWindow"
+          "prompt _"
+          "count _";
+  }
+
+  textarea {
+    margin-right: 10px;
+  }
+
+  .ioWindow {
+    margin-left: 10px;
+  }
+}
+
+.count {
+  grid-area: count;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  margin-right: 10px;
+}
+
+.ioWindow {
+  background-color: #242424;
+  border: 2px solid #1a1a1a;
+  border-radius: 8px;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 50% 50%;
+  grid-template-areas:
+      "generate"
+      "audio";
+}
+
+.generate {
+  grid-area: generate;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.audio {
+  grid-area: audio;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.lds-roller {
+  margin-bottom: 15px;
+}
+
+.error {
+  display: flex;
+  background-color: #611111;
+  border: 2px solid #420b0b;
+  color: black;
+  border-radius: 5px;
+  width: min(100%, 300px);
+  height: 40px;
+  margin-top: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+h1 {
+  grid-area: title;
+  text-align: center;
+}
+
+textarea {
+  background-color: #3B3B3B;
   color: white;
+  grid-area: prompt;
+  resize: none;
+  border-radius: 5px;
+  font-size: 25px;
+  outline: none;
+  padding: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+audio {
+  width: min(100%, 300px);
+  margin-top: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button {
+  width: 150px;
+  height: 60px;
+  margin-bottom: 20px;
+  color: white;
 }
