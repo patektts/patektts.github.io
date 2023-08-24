@@ -50,7 +50,7 @@ function App() {
                   setError(true);
                   setLoading(false);
                 }}>
-                  <source src={"https://130.162.62.124/?text='" + text + "'"}/>
+                  <source src={"https://antonimlynarczyk.com/?text='" + text + "'"}/>
                 </audio>
               )
             }
